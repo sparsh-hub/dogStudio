@@ -61,7 +61,6 @@ const Dog = () => {
         endTrigger: '#section-3',
         start: 'top top',
         end: 'bottom bottom',
-        markers: true,
         scrub: true
       }
     })
@@ -77,7 +76,7 @@ const Dog = () => {
       y:`-=${Math.PI}`
     }, "third")
     .to(dogModel.current.scene.position, {
-      x: "-=0.5",
+      x: "-=0.4",
       y: "-=0.05",
       z: '+=0.6'
     }, "third")
