@@ -1,10 +1,17 @@
 import { useThree } from '@react-three/fiber'
 import * as THREE from 'three'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { OrbitControls, useAnimations, useGLTF, useTexture } from '@react-three/drei'
 import { normalMap, texture } from 'three/tsl'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Dog = () => {
+
+  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(useGSAP)
+
   const model = useGLTF('/models/dog.drc.glb')
 
   useThree(({camera, scene, gl}) => {
@@ -44,6 +51,39 @@ const Dog = () => {
       child.material = branchMaterial
     }
   })
+
+  const dogModel = useRef(model) 
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: '#section-1',
+        endTrigger: '#section-3',
+        start: 'top top',
+        end: 'bottom bottom',
+        markers: true,
+        scrub: true
+      }
+    })
+
+    tl.to(dogModel.current.scene.position, {
+      z: '-=0.75',
+      y: '+=0.1'
+    })
+    .to(dogModel.current.scene.rotation, {
+      x: `+=${Math.PI / 12}`,
+    })
+    .to(dogModel.current.scene.rotation, {
+      y:`-=${Math.PI}`
+    }, "third")
+    .to(dogModel.current.scene.position, {
+      x: "-=0.5",
+      y: "-=0.05",
+      z: '+=0.6'
+    }, "third")
+
+
+  }, [])
   return (
       <>
         <primitive object={model.scene} position={[0.18, -0.55, 0]} rotation={[0, Math.PI/4.7, 0]} />
