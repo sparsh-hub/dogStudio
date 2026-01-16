@@ -93,6 +93,7 @@ const Dog = () => {
   const branchMaterial = new THREE.MeshMatcapMaterial({
     normalMap: branchNormalMap,
     map: branchMap,
+    matcap: mat2   // applying matcap texture
   })
 
     function onBeforeCompile(shader) {
@@ -128,7 +129,7 @@ const Dog = () => {
     }
 
     dogMaterial.onBeforeCompile = onBeforeCompile
- 
+    branchMaterial.onBeforeCompile = onBeforeCompile
 
   model.scene.traverse((child) => {
     if(child.name.includes("DOG")){
@@ -145,7 +146,7 @@ const Dog = () => {
     const tl = gsap.timeline({
       scrollTrigger:{
         trigger: '#section-1',
-        endTrigger: '#section-3',
+        endTrigger: '#section-4',
         start: 'top top',
         end: 'bottom bottom',
         scrub: true

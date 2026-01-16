@@ -31,9 +31,10 @@ section {
   top: 0;
   left: 0;
   z-index: -1;
-  background-image: url(/background-l.png);
+  /* background-image: url(/background-l.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background-color: #08080e;
   transition: all 0.3s linear;
 }
 
@@ -220,4 +221,83 @@ main:has(#section-2 .title[img-title="kennedy"]:hover) .images #kennedy {
 main:has(#section-2 .title[img-title="opera"]:hover) .images #opera {
   opacity: 1;
   background-color: rgb(176, 4, 4);
+}
+
+#section-3{
+  padding-top: 10rem;
+  padding-inline: 10rem;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  min-height: initial;
+
+  .top,
+  .bottom{
+    display: flex;
+    width: 100%;
+  }
+
+  .left,
+  .right{
+    width: 50%;
+  }
+
+  .top .left{
+    padding-left: 5rem;
+
+    h3{
+      font-size: 2.5rem;
+      font-weight: 100;
+      opacity: 1;
+    }
+  }
+
+  .bottom .right{
+    display: flex;
+    p{
+      opacity: 50%;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+
+#section-4{
+
+  min-height: 50vh;
+  padding-inline: 10rem;
+
+    .top,
+  .bottom{
+    display: flex;
+    width: 100%;
+    gap: 3rem;
+  }
+
+  .left,
+  .right{
+    width: 50%;
+    padding-right: 5rem;
+
+  }
+
+  .top .left{
+    margin-right: 3rem;
+
+    h3{
+      font-size: 2.5rem;
+      font-weight: 100;
+      opacity: 1;
+    }
+  }
+
+  .bottom .right{
+    display: flex;
+    gap: 4rem;
+    margin-left: 5rem;
+    p{
+      opacity: 50%;
+      font-size: 1rem;
+    }
+  }
 }
